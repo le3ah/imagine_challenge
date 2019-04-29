@@ -1,4 +1,4 @@
-Id,Name,Address,City,State,Division,Major Group,Industry Group,SIC,Description
+id,name,address,city,state,division,major_group,industry_group,sic,description
 1,Robinson and Sons,37898 Rollins Port Suite 901,New Emilyton,North Carolina,D,20,205,2052,Cookies and Crackers
 2,Davis Inc,9407 Robert Plains Suite 608,Shelbytown,Arizona,A,1,17,173,Tree Nuts
 3,"Norman, Walker and Hernandez",6952 Carrillo Square Suite 456,East Jeremyshire,Tennessee,D,34,346,3469,"Metal Stampings, Not Elsewhere Classified"
