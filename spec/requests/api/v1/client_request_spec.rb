@@ -25,4 +25,12 @@ describe 'Client API' do
       expect(client["data"]["attributes"]["name"]).to_not eq(client_2.name)
     end
   end
+  it "returns a total count of all clients" do
+    create_list(:client, 5)
+    get "/api/v1/clients/total_count"
+
+    client_count = JSON.parse(response.body)
+    expect(response).to be_successful
+    expect(client_count).to eq(5)
+  end
 end
