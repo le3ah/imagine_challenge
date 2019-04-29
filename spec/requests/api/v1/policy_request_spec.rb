@@ -46,4 +46,20 @@ describe 'Policy API' do
       expect(policy["data"]["attributes"]["carrier_id"]).to_not eq(policy_2.carrier_id)
     end
   end
+  context 'parameter find all search' do
+    it "can find all policies by expiration_date" do
+      carrier = create(:carrier)
+      carrier_2 = create(:carrier, company_name: "Not Bluths")
+      client = create(:client)
+      policy_1 = create(:policy, carrier_id: carrier.id, client_id: client.id, expiration_date: "2018-03-02", carrier_policy_number: "12345678")
+      policy_2 = create(:policy, carrier_id: carrier_2.id, client_id: client.id, expiration_date: "2018-03-02", carrier_policy_number: "987654321")
+
+      get "/api/v1/policies/find_all?expiration_date=#{policy_1.expiration_date}"
+
+      policies = JSON.parse(response.body)
+      expect(response).to be_successful
+      expect(policies["data"][0]["attributes"]["expiration_date"]).to eq(policy_1.expiration_date)
+      expect(policies["data"][1]["attributes"]["expiration_date"]).to eq(policy_2.expiration_date)
+    end
+  end
 end
