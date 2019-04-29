@@ -76,4 +76,21 @@ describe 'Policy API' do
       expect(policies["data"][1]["attributes"]["effective_date"]).to eq(policy_2.effective_date)
     end
   end
+  it "returns a total count of all policies" do
+    carrier = create(:carrier)
+    carrier_2 = create(:carrier, company_name: "Not Bluths")
+    client = create(:client)
+    client_2 = create(:client, name: "Lucille 2")
+    policy_1 = create(:policy, carrier_id: carrier.id, client_id: client.id, carrier_policy_number: "12345678")
+    policy_2 = create(:policy, carrier_id: carrier_2.id, client_id: client.id, carrier_policy_number: "987654321")
+    policy_3 = create(:policy, carrier_id: carrier_2.id, client_id: client_2.id, carrier_policy_number: "907654321")
+    policy_4 = create(:policy, carrier_id: carrier.id, client_id: client.id, carrier_policy_number: "981154321")
+    policy_5 = create(:policy, carrier_id: carrier.id, client_id: client_2.id, carrier_policy_number: "297654321")
+
+    get "/api/v1/policies/total_count"
+
+    policy_count = JSON.parse(response.body)
+    expect(response).to be_successful
+    expect(policy_count).to eq(5)
+  end
 end
