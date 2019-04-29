@@ -17,15 +17,12 @@ describe 'Policy API' do
 
     expect(policies.count).to eq(1)
     expect(policies["data"].count).to eq(3)
-    expect(policies["data"][0]["attributes"]["id"]).to eq(policy_1.id)
     expect(policies["data"][0]["attributes"]["carrier_id"]).to eq(carrier_1.id)
     expect(policies["data"][0]["attributes"]["client_id"]).to eq(client_1.id)
 
-    expect(policies["data"][1]["attributes"]["id"]).to eq(policy_2.id)
     expect(policies["data"][1]["attributes"]["carrier_id"]).to eq(carrier_2.id)
     expect(policies["data"][1]["attributes"]["client_id"]).to eq(client_1.id)
 
-    expect(policies["data"][2]["attributes"]["id"]).to eq(policy_3.id)
     expect(policies["data"][2]["attributes"]["carrier_id"]).to eq(carrier_1.id)
     expect(policies["data"][2]["attributes"]["client_id"]).to eq(client_2.id)
   end
