@@ -12,4 +12,17 @@ describe 'Carrier API' do
     expect(carriers.count).to eq(1)
     expect(carriers["data"].count).to eq(3)
   end
+  context 'parameter find search' do
+    it "can find a single carrier by company_name" do
+      carrier_1 = create(:carrier)
+      carrier_2 = create(:carrier, company_name: "Not Bluths")
+
+      get "/api/v1/carriers/find?company_name=#{carrier_1.company_name}"
+
+      carrier = JSON.parse(response.body)
+      expect(response).to be_successful
+      expect(carrier["data"]["attributes"]["company_name"]).to eq(carrier_1.company_name)
+      expect(carrier["data"]["attributes"]["company_name"]).to_not eq(carrier_2.company_name)
+    end
+  end
 end
