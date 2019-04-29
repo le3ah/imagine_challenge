@@ -10,6 +10,8 @@ class CreateClients < ActiveRecord::Migration[5.2]
       t.string :industry_group, :null => true
       t.string :sic, :null => true
       t.string :description, :null => true
+
+      t.timestamps
     end
   end
 end

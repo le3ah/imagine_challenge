@@ -7,6 +7,8 @@ class CreateCarriers < ActiveRecord::Migration[5.2]
       t.string :company_city
       t.string :company_state
       t.string :company_zip
+
+      t.timestamps
     end
   end
 end
