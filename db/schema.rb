@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2019_04_29_001535) do
     t.string "company_city"
     t.string "company_state"
     t.string "company_zip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "clients", force: :cascade do |t|
@@ -34,6 +36,8 @@ ActiveRecord::Schema.define(version: 2019_04_29_001535) do
     t.string "industry_group"
     t.string "sic"
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "policies", force: :cascade do |t|
@@ -45,6 +49,8 @@ ActiveRecord::Schema.define(version: 2019_04_29_001535) do
     t.string "expiration_date"
     t.string "written_premium"
     t.string "carrier_policy_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["carrier_id"], name: "index_policies_on_carrier_id"
     t.index ["client_id"], name: "index_policies_on_client_id"
   end
