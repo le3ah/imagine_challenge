@@ -6,9 +6,9 @@ describe 'Policy API' do
     carrier_2 = create(:carrier)
     client_1 = create(:client)
     client_2 = create(:client)
-    policy_1 = create(:policy, carrier_id: carrier_1.id, client_id: client_1.id)
-    policy_2 = create(:policy, carrier_id: carrier_2.id, client_id: client_1.id)
-    policy_3 = create(:policy, carrier_id: carrier_1.id, client_id: client_2.id)
+    policy_1 = create(:policy, carrier_id: carrier_1.id, client_id: client_1.id, carrier_policy_number: "12345678")
+    policy_2 = create(:policy, carrier_id: carrier_2.id, client_id: client_1.id, carrier_policy_number: "987654321")
+    policy_3 = create(:policy, carrier_id: carrier_1.id, client_id: client_2.id, carrier_policy_number: "784536123")
     get '/api/v1/policies'
 
     expect(response).to be_successful
@@ -34,8 +34,8 @@ describe 'Policy API' do
       carrier = create(:carrier)
       carrier_2 = create(:carrier, company_name: "Not Bluths")
       client = create(:client)
-      policy_1 = create(:policy, carrier_id: carrier.id, client_id: client.id)
-      policy_2 = create(:policy, carrier_id: carrier_2.id, client_id: client.id)
+      policy_1 = create(:policy, carrier_id: carrier.id, client_id: client.id, carrier_policy_number: "12345678")
+      policy_2 = create(:policy, carrier_id: carrier_2.id, client_id: client.id, carrier_policy_number: "987654321")
 
       get "/api/v1/policies/find?carrier_policy_number=#{policy_1.carrier_policy_number}"
 
