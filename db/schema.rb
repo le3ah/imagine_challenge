@@ -17,15 +17,34 @@ ActiveRecord::Schema.define(version: 2019_04_29_001535) do
 
   create_table "carriers", force: :cascade do |t|
     t.string "company_name"
+    t.string "company_address_1"
+    t.string "company_address_2"
+    t.string "company_city"
+    t.string "company_state"
+    t.string "company_zip"
   end
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "division"
+    t.string "major_group"
+    t.string "industry_group"
+    t.string "sic"
+    t.string "description"
   end
 
   create_table "policies", force: :cascade do |t|
     t.bigint "carrier_id"
     t.bigint "client_id"
+    t.string "type"
+    t.string "division"
+    t.string "effective_date"
+    t.string "expiration_date"
+    t.string "written_premium"
+    t.string "carrier_policy_number"
     t.index ["carrier_id"], name: "index_policies_on_carrier_id"
     t.index ["client_id"], name: "index_policies_on_client_id"
   end
