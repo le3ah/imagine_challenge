@@ -3,7 +3,7 @@
 ## Imagine Analytics - Platform Engineer Challenge
 This challenge is designed to expose a client's book of business to carrier partners in order to assist with their pursuit of new business.
 
-The data set consists of three tables - Clients, Carriers, and Policies.  These can be referenced in CSV form this app via ```db/data/carriers.csv```, ```db/data/clients.csv```, & ```db/data/policies.csv```
+The data set consists of three tables - Clients, Carriers, and Policies.  These can be referenced in CSV form in this app via ```db/data/carriers.csv```, ```db/data/clients.csv```, & ```db/data/policies.csv```
 
 * Ruby version - 2.4.5
 
