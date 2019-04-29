@@ -1,9 +1,9 @@
 class CreatePolicies < ActiveRecord::Migration[5.2]
   def change
     create_table :policies do |t|
-      t.references :carrier, foreign_key: true
-      t.references :client, foreign_key: true
-      t.string :type, :null => true
+      t.references :carrier, foreign_key: true, :null => true
+      t.references :client, foreign_key: true, :null => true
+      t.string :policy_type, :null => true
       t.string :division, :null => true
       t.string :effective_date, :null => true
       t.string :expiration_date, :null => true
