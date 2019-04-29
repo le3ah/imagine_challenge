@@ -29,4 +29,21 @@ describe 'Policy API' do
     expect(policies["data"][2]["attributes"]["carrier_id"]).to eq(carrier_1.id)
     expect(policies["data"][2]["attributes"]["client_id"]).to eq(client_2.id)
   end
+  context 'parameter find search' do
+    it "can find a single policy by policy_number" do
+      carrier = create(:carrier)
+      carrier_2 = create(:carrier, company_name: "Not Bluths")
+      client = create(:client)
+      policy_1 = create(:policy, carrier_id: carrier.id, client_id: client.id)
+      policy_2 = create(:policy, carrier_id: carrier_2.id, client_id: client.id)
+
+      get "/api/v1/policies/find?carrier_policy_number=#{policy_1.carrier_policy_number}"
+
+      policy = JSON.parse(response.body)
+      expect(response).to be_successful
+      expect(policy["data"]["attributes"]["carrier_policy_number"]).to eq(policy_1.carrier_policy_number)
+      expect(policy["data"]["attributes"]["carrier_id"]).to eq(policy_1.carrier_id)
+      expect(policy["data"]["attributes"]["carrier_id"]).to_not eq(policy_2.carrier_id)
+    end
+  end
 end
