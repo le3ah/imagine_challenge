@@ -16,7 +16,7 @@ To run the Imagine Challenge on your local machine, navigate to the directory in
 ```
 $ git clone
 git@github.com:le3ah/imagine_challenge.git
-$ cd thirsty_plants
+$ cd imagine_challenge
 $ bundle
 $ rails g rspec:install
 $ rails db:create
