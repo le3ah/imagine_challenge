@@ -62,6 +62,7 @@ At the time of this application's creation, there are a total of 5,000 clients i
 The default page setting is 1 and the default clients per page is 50 if no params are provided.
 The total count of clients can be viewed by checking the Headers in your workspace.  I used Postman for viewing my endpoints, and a screenshot of some of my headers is below:
 <img width="412" alt="Screen Shot 2019-04-29 at 5 50 26 PM" src="https://user-images.githubusercontent.com/42391567/56933965-5b93b400-6aa7-11e9-9aed-53a2a8820e18.png">
+
 `X-Total-Count` is the total number of clients.
 ## Gems
 
@@ -70,7 +71,7 @@ I added the following gems for production purposes:
 * awesome_print
 * kaminari
 
-Other additional development & test environment * gems include the following:
+Other additional development & test environment gems include the following:
 * gem 'rspec-rails'
 * gem 'capybara'
 * gem 'launchy'
