@@ -10,7 +10,6 @@ describe 'Carrier API' do
     carriers = JSON.parse(response.body)
 
     expect(carriers.count).to eq(1)
-    binding.pry
     expect(carriers["data"].count).to eq(3)
   end
 end
