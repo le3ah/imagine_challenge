@@ -12,6 +12,15 @@ describe 'Client API' do
     expect(clients.count).to eq(1)
     expect(clients["data"].count).to eq(3)
   end
+  it "returns one client by its id" do
+    client_1 = create(:client)
+
+    get "/api/v1/clients/#{client_1.id}"
+
+    client = JSON.parse(response.body)
+    expect(response).to be_successful
+    expect(client["data"]["id"]).to eq(client_1.id.to_s)
+  end
   context 'paramter find search' do
     it "can find a single client by name" do
       client_1 = create(:client)
@@ -32,5 +41,27 @@ describe 'Client API' do
     client_count = JSON.parse(response.body)
     expect(response).to be_successful
     expect(client_count).to eq(5)
+  end
+  context "client relationships" do
+    it "returns all policies for a single client" do
+      client_1 = create(:client)
+      client_2 = create(:client)
+      carrier_1 = create(:carrier)
+
+      policy_1 = create(:policy, carrier_id: carrier_1.id, client_id: client_1.id, carrier_policy_number: "12345678")
+      policy_2 = create(:policy, carrier_id: carrier_1.id, client_id: client_1.id, carrier_policy_number: "987654321")
+      policy_3 = create(:policy, carrier_id: carrier_1.id, client_id: client_2.id, carrier_policy_number: "784536123")
+
+      get "/api/v1/clients/#{client_1.id}/policies"
+
+      expect(response).to be_successful
+      policies = JSON.parse(response.body)
+
+      expect(policies["data"].count).to eq(2)
+      expect(policies["data"][0]["attributes"]["client_id"]).to eq(client_1.id)
+      expect(policies["data"][0]["attributes"]["client_id"]).to_not eq(client_2.id)
+      expect(policies["data"][1]["attributes"]["client_id"]).to eq(client_1.id)
+      expect(policies["data"][1]["attributes"]["client_id"]).to_not eq(client_2.id)
+    end
   end
 end
