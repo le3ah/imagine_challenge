@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :carriers, only: [:index]
       resources :clients, only: [:index]
+      resources :policies, only: [:index]
     end
   end
 end
