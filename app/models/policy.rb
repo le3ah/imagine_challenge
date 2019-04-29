@@ -1,4 +1,4 @@
 class Policy < ApplicationRecord
-  belongs_to :carrier
-  belongs_to :client
-end 
+  belongs_to :carrier, optional: true
+  belongs_to :client, optional: true
+end
