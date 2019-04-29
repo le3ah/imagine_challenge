@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_04_29_001535) do
     t.string "division"
     t.string "effective_date"
     t.string "expiration_date"
-    t.string "written_premium"
+    t.bigint "written_premium"
     t.string "carrier_policy_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
