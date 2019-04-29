@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       namespace :carriers do
         get "/find", to: 'search#show'
       end
+      namespace :clients do
+        get "/find", to: 'search#show'
+      end
       resources :carriers, only: [:index]
       resources :clients, only: [:index]
       resources :policies, only: [:index]
